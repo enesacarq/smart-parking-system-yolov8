@@ -2,7 +2,7 @@ from yerleri_cizme import ParkIsaretleyici
 from arac_tanima import tanima
 from ultralytics import YOLO
 
-modelcv="a.pt"
+modelcv="otopark_arac_tespit.pt"
 model = YOLO(modelcv)
 model.overrides['conf'] = 0.25
 model.overrides['imgsz'] = 1024
