@@ -1,0 +1,25 @@
+# Python cache dosyaları
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Sanal ortam (virtual environment) klasörleri
+env/
+venv/
+.venv/
+
+# PyCharm ve VSCode gibi IDE dosyaları
+.idea/
+.vscode/
+
+# Sistem dosyaları
+.DS_Store
+Thumbs.db
+
+# Log ve geçici dosyalar
+*.log
+*.tmp
+
+# Gizli ortam değişkenleri
+.env
