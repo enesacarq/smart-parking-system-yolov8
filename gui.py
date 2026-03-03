@@ -31,6 +31,13 @@ class Gui:
         return data
     
     def sag_frame_olustur(self):
+
+        dolu_sayisi = sum(1 for yer in self.park_yerleri if yer["durum"] == "true")
+        bos_sayisi = sum(1 for yer in self.park_yerleri if yer["durum"] == "false")
+        doluluk = (dolu_sayisi / (bos_sayisi + dolu_sayisi)) * 100
+        doluluk = int(doluluk)
+        doluluk=f"%{doluluk}"
+
         self.frame1=tk.Frame(self.pencere,bg="#86C0E9",width=374,height=700)
         self.frame1.place(x=640,y=15)
         #Bilgi ekranı frame
@@ -49,7 +56,7 @@ class Gui:
         self.dolulabel.place(relx=0.5,anchor="n")
 
         #Dolu sayısı
-        self.dolusayi=tk.Label(self.frame3,bg="white",text="12",font=("Ariel",40))
+        self.dolusayi=tk.Label(self.frame3,bg="white",text=str(dolu_sayisi),font=("Ariel",40))
         self.dolusayi.place(relx=0.5,rely=0.90,anchor="s")
 
         #Boş frame
@@ -61,15 +68,16 @@ class Gui:
         self.boslabel.place(relx=0.5,anchor="n")
 
         #Boş sayısı
-        self.bossayi=tk.Label(self.frame4,bg="white",text="12",font=("Ariel",40))
+        self.bossayi=tk.Label(self.frame4,bg="white",text=str(bos_sayisi),font=("Ariel",40))
         self.bossayi.place(relx=0.5,rely=0.90,anchor="s")
         #Doluluk frame
         self.frame5=tk.Frame(self.frame1,bg="white",width=354,height=50,relief="solid",borderwidth=2)
         self.frame5.place(x=10,y=220)
 
         #Doluluk labeli
-        self.doluluklabel=tk.Label(self.frame5,text="Doluluk= %50",font=("Arial",26),bg="white")
+        self.doluluklabel=tk.Label(self.frame5,text=doluluk,font=("Arial",26),bg="white")
         self.doluluklabel.place(relx=0.5,rely=0.5,anchor="center")
+
     def park_alanlarini_olustur(self):
         sutun = 4
         satir = 6
