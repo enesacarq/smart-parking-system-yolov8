@@ -80,6 +80,8 @@ def tanima(video,park_yerleri,model):
             elif memory["counter"] <= 1:
                 memory["status"] = False
 
+            park["durum"] = "true" if memory["status"] else "false"
+
             renk = (0, 0, 255) if memory["status"] else (0, 255, 0)
             
 
@@ -99,6 +101,7 @@ def tanima(video,park_yerleri,model):
 
         if cv2.waitKey(20) & 0xFF == 27:
             break
-
+    with open(park_yerleri, "w") as f:
+        json.dump(park_regions, f, indent=4)
     cap.release()
     cv2.destroyAllWindows()
