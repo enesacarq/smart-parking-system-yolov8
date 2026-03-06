@@ -80,7 +80,7 @@ class ParkIsaretleyici:
 
     def kaydet(self, dosya):
         park_data = [
-            {"park_id": p.park_id, "pts": p.pts.reshape(-1, 2).tolist()}
+            {"park_id": p.park_id, "pts": p.pts.reshape(-1, 2).tolist(), "durum": "false"}
             for p in self.park_yerleri
         ]
         with open(dosya, "w") as f:
