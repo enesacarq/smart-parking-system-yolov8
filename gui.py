@@ -1,6 +1,7 @@
 import tkinter as tk
 import json
-
+from PIL import Image,ImageTk
+import cv2
 
 class Gui:
     def __init__(self,pencere,park_yerleri):
@@ -13,7 +14,7 @@ class Gui:
         self.butonlari_olustur()
         self.sag_frame_olustur()
         self.park_alanlarini_olustur()
-
+        
 
     def butonlari_olustur(self):
         self.buton1=tk.Button(self.pencere,text="Kamera1",fg="white",bg="#234C6A",activebackground="#327093")
@@ -56,7 +57,7 @@ class Gui:
         self.dolulabel.place(relx=0.5,anchor="n")
 
         #Dolu sayısı
-        self.dolusayi=tk.Label(self.frame3,bg="white",text=str(dolu_sayisi),font=("Ariel",40))
+        self.dolusayi=tk.Label(self.frame3,bg="white",text=str(dolu_sayisi),font=("Arial",40))
         self.dolusayi.place(relx=0.5,rely=0.90,anchor="s")
 
         #Boş frame
@@ -68,7 +69,7 @@ class Gui:
         self.boslabel.place(relx=0.5,anchor="n")
 
         #Boş sayısı
-        self.bossayi=tk.Label(self.frame4,bg="white",text=str(bos_sayisi),font=("Ariel",40))
+        self.bossayi=tk.Label(self.frame4,bg="white",text=str(bos_sayisi),font=("Arial",40))
         self.bossayi.place(relx=0.5,rely=0.90,anchor="s")
         #Doluluk frame
         self.frame5=tk.Frame(self.frame1,bg="white",width=354,height=50,relief="solid",borderwidth=2)
@@ -77,6 +78,11 @@ class Gui:
         #Doluluk labeli
         self.doluluklabel=tk.Label(self.frame5,text=doluluk,font=("Arial",26),bg="white")
         self.doluluklabel.place(relx=0.5,rely=0.5,anchor="center")
+
+        #Sol label 
+        self.cikti_label=tk.Label(self.pencere,bg="black")
+        self.cikti_label.place(x=10,y=45,width=630,height=580)
+        self.cikti_label.lift()
 
     def park_alanlarini_olustur(self):
         sutun = 4
@@ -92,14 +98,20 @@ class Gui:
             alanlabel = tk.Label(alanframe, text=str(yer["park_id"]), font=("Arial", 20), bg=renk)
             alanlabel.place(relx=0.5, rely=0.5, anchor="center")
             
+    def ciktiyi_goster(self,frame):
+        if frame is not None:
+            print(f"Frame geldi: shape={frame.shape}, dtype={frame.dtype}, max={frame.max()}")
+            self.frame= cv2.cvtColor(self.frame, cv2.COLOR_BGR2RGB)
+            self.img=Image.fromarray(self.frame)
+            self.img = self.img.resize((630, 580), Image.LANCZOS)
+            self.imgtk=ImageTk.PhotoImage(self.img)
+            
+            self.cikti_label.configure(image=self.imgtk)
+            self.cikti_label.imgtk=self.imgtk
+
+        else:
+            print("goruntu verisi gelmedi.")
                 
                    
-def main():
-    park_yerleri="park_yerleri.json"
-    pencere=tk.Tk()
-    app=Gui(pencere,park_yerleri)
-    pencere.mainloop()
 
-if __name__ =="__main__":
-    main()
 
