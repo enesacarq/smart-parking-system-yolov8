@@ -1,6 +1,9 @@
 from yerleri_cizme import ParkIsaretleyici
 from arac_tanima import tanima
 from ultralytics import YOLO
+from gui import Gui
+import tkinter as tk
+import threading
 
 modelcv="otopark_arac_tespit.pt"
 model = YOLO(modelcv)
@@ -10,6 +13,7 @@ model.overrides['imgsz'] = 1024
 def main():
     video="otopark1.mp4"
     park_yerleri_dosyasi="park_yerleri.json"
+
     while True:
         deger=input("*****Menü*****\n1-Yerleri yeniden çiz.\n2-Mevcut yerleri kullan\n\t")
         if deger =="1":
@@ -22,7 +26,22 @@ def main():
         else :
             print("!!!Gecersiz deger girdiniz.Tekrar deneyiniz!!!\n")
 
-    tanima(video,park_yerleri_dosyasi,model)
+
+    pencere=tk.Tk()
+    app=Gui(pencere,park_yerleri_dosyasi)
+    def guvenli_goster(frame):
+        pencere.after(0,app.ciktiyi_goster,frame)
+    threading.Thread(
+        target=tanima,
+        args=(video, park_yerleri_dosyasi, model),
+        kwargs={"callback": guvenli_goster},
+        daemon=True
+    ).start()
+
+    pencere.mainloop()
+
+
+    
 
 if __name__=="__main__":
     main()
