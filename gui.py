@@ -33,8 +33,8 @@ class Gui:
     
     def sag_frame_olustur(self):
 
-        dolu_sayisi = sum(1 for yer in self.park_yerleri if yer["durum"] == "true")
-        bos_sayisi = sum(1 for yer in self.park_yerleri if yer["durum"] == "false")
+        dolu_sayisi = sum(1 for yer in self.park_yerleri if yer["durum"] == "True")
+        bos_sayisi = sum(1 for yer in self.park_yerleri if yer["durum"] == "False")
         doluluk = (dolu_sayisi / (bos_sayisi + dolu_sayisi)) * 100
         doluluk = int(doluluk)
         doluluk=f"%{doluluk}"
@@ -90,7 +90,7 @@ class Gui:
         boyut = 50
         bosluk = 10
         for i, yer in enumerate(self.park_yerleri):
-            renk = "red" if yer["durum"] == "true" else "green"
+            renk = "red" if yer["durum"] == "True" else "green"
             alanframe = tk.Frame(self.frame1, bg=renk, width=boyut, height=boyut, borderwidth=2, relief="solid")
             x = 10 + (i % satir) * (boyut + bosluk)
             y = 270 + (i // satir) * (boyut + bosluk)+bosluk
