@@ -28,7 +28,7 @@ def tanima(video,park_yerleri,model,callback=None):
         while cap.isOpened():
             ret, frame = cap.read()
             if not ret:
-                print("görüntüsü veri okunamadi-threadloop")
+                print("goruntu veri okunamadi-threadloop")
                 break
             print(f"Video frame okundu: ret={ret}, frame={frame.shape}")
             frame = cv2.resize(frame, (1080, 720))
