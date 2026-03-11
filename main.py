@@ -29,8 +29,11 @@ def main():
 
     pencere=tk.Tk()
     app=Gui(pencere,park_yerleri_dosyasi)
-    def guvenli_goster(frame):
-        pencere.after(0,app.ciktiyi_goster,frame)
+
+    def guvenli_goster(frame, park_regions=None):
+        pencere.after(0, app.ciktiyi_goster, frame, park_regions)
+
+        
     threading.Thread(
         target=tanima,
         args=(video, park_yerleri_dosyasi, model),

@@ -30,7 +30,6 @@ def tanima(video,park_yerleri,model,callback=None):
             if not ret:
                 print("goruntu veri okunamadi-threadloop")
                 break
-            print(f"Video frame okundu: ret={ret}, frame={frame.shape}")
             frame = cv2.resize(frame, (1080, 720))
             frame_count += 1
 
@@ -101,16 +100,16 @@ def tanima(video,park_yerleri,model,callback=None):
                     2
                 )
             if callback:
-                callback(frame.copy())#güvenlik için kopya
+                callback(frame.copy(), park_regions)  # park_regions'ı da gönder
 
             if cv2.waitKey(20) & 0xFF == 27:
                 break
     
 
-    with open(park_yerleri, "w") as f:
-        json.dump(park_regions, f, indent=4)
-    cap.release()
-    cv2.destroyAllWindows()
+        with open(park_yerleri, "w") as f:
+            json.dump(park_regions, f, indent=4)
+        cap.release()
+        cv2.destroyAllWindows()
     t=threading.Thread(target=thread_loop,daemon=True)
     t.start()
     
