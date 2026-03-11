@@ -8,7 +8,7 @@ import threading
 modelcv="otopark_arac_tespit.pt"
 model = YOLO(modelcv)
 model.overrides['conf'] = 0.25
-model.overrides['imgsz'] = 1024
+model.overrides['imgsz'] = 640
 
 def main():
     video="otopark1.mp4"
@@ -33,7 +33,7 @@ def main():
     def guvenli_goster(frame, park_regions=None):
         pencere.after(0, app.ciktiyi_goster, frame, park_regions)
 
-        
+
     threading.Thread(
         target=tanima,
         args=(video, park_yerleri_dosyasi, model),
