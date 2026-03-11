@@ -4,11 +4,19 @@ from ultralytics import YOLO
 from gui import Gui
 import tkinter as tk
 import threading
+import torch 
 
 modelcv="otopark_arac_tespit.pt"
 model = YOLO(modelcv)
 model.overrides['conf'] = 0.25
 model.overrides['imgsz'] = 640
+# GPU varsa GPU, yoksa CPU
+if torch.cuda.is_available():
+    model.to('cuda')
+    print(f"GPU kullaniliyor: {torch.cuda.get_device_name(0)}")
+else:
+    model.to('cpu')
+    print("CPU kullaniliyor")
 
 def main():
     video="otopark1.mp4"

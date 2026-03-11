@@ -25,7 +25,7 @@ def tanima(video,park_yerleri,model,callback=None):
 
     def thread_loop():
         nonlocal last_centers,frame_count
-        while cap.isOpened():
+        while cap.isOpened():  
             ret, frame = cap.read()
             if not ret:
                 print("goruntu veri okunamadi-threadloop")
