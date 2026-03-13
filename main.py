@@ -13,17 +13,17 @@ model.overrides['imgsz'] = 640
 # GPU varsa GPU, yoksa CPU
 if torch.cuda.is_available():
     model.to('cuda')
-    print(f"GPU kullaniliyor: {torch.cuda.get_device_name(0)}")
+    print(f"\nGPU kullaniliyor: {torch.cuda.get_device_name(0)}")
 else:
     model.to('cpu')
-    print("CPU kullaniliyor")
+    print("\nCPU kullaniliyor")
 
 def main():
     video="otopark1.mp4"
     park_yerleri_dosyasi="park_yerleri.json"
 
     while True:
-        deger=input("*****Menü*****\n1-Yerleri yeniden çiz.\n2-Mevcut yerleri kullan\n\t")
+        deger=input("\n\t*****Menu*****\n1-Yerleri yeniden ciz.\n2-Mevcut yerleri kullan\n\t")
         if deger =="1":
             isaretleyici=ParkIsaretleyici(video)
             isaretleyici.calistir()

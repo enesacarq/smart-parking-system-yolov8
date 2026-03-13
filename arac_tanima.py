@@ -100,7 +100,7 @@ def tanima(video,park_yerleri,model,callback=None):
                     2
                 )
             if callback:
-                callback(frame.copy(), park_regions)  # park_regions'ı da gönder
+                callback(frame.copy(), park_regions)  
 
             if cv2.waitKey(20) & 0xFF == 27:
                 break
