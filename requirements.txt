@@ -1,0 +1,8 @@
+ultralytics
+torch
+opencv-python
+numpy
+Pillow
+
+
+#For download  :  pip install -r requirements.txt
