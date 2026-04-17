@@ -10,7 +10,7 @@ A smart parking system that performs occupancy analysis of parking spaces in ope
  --- 
 
 ## Çıktı / Output  
-
+![Demo](output.gif)
 ---
 ## Proje Hakkında / About the Project   
 **TR**  
