@@ -11,7 +11,7 @@ A smart parking system that performs occupancy analysis of parking spaces in ope
 
 ## Çıktı / Output  
 ![Demo](output.gif)
----
+***
 ## Proje Hakkında / About the Project   
 **TR**  
 Bu sistem otoparkta yerlerin gerçek zamanlı (real time) olarak boş veya doluluk durumu hakkında bilgi sağlar.  
