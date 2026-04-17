@@ -7,15 +7,11 @@ Görüntü işleme ve yapay zeka algoritmaları kullanarak açık otoparklardaki
 **EN**  
 A smart parking system that performs occupancy analysis of parking spaces in open parking lots using image processing and artificial intelligence algorithms.  
 
-
-
-
-
-
-
+ --- 
 
 ## Çıktı / Output  
 
+---
 ## Proje Hakkında / About the Project   
 **TR**  
 Bu sistem otoparkta yerlerin gerçek zamanlı (real time) olarak boş veya doluluk durumu hakkında bilgi sağlar.  
@@ -41,8 +37,8 @@ Objectives:
 - To demonstrate the application of image processing and 
   artificial intelligence technologies to real-world problems
 
-
-
+  
+---
 ## Teknolojiler / Technologies
 - Python 3.8+  
 - tkinter  (gui)
@@ -53,6 +49,7 @@ Objectives:
 - numpy  
 - torch  
 - Pillow
+ ---   
 ## Kurulum  / Installation
 Repoyu klonla 
 ```bash
@@ -84,4 +81,14 @@ Projeyi çalştır
 ```bash
 python main.py
 ```
+  
+---
+## Referanslar / References
+- AI Model: [yolov8s-visdrone](https://huggingface.co/mshamrai/yolov8s-visdrone) — mshamrai (OpenRAIL Lisansı)
+- GUI: [OtoparkTakipSistemi](https://github.com/adilomrplt/OtoparkTakipSistemi) — adilomrplt
+---  
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
 
